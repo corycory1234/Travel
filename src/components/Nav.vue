@@ -57,11 +57,29 @@
 
       <!-- 1.3 平板<INPUT> <SELECT>; 平板、手機<INPUT><SELECT> -->
       <!-- 1.4 搜尋 <INPUT> -->
-      <div class="container search-Input d-lg-none mt-2">
-        <div class="row justify-content-center align-items-center">
-          <input type="text" class="col-12 form-control flex-grow-1" placeholder="搜尋關鍵字"
-          v-model="keyword" @keydown.enter="search">
+      <!-- <div class="container d-lg-none mt-2">
+        <div class="row justify-content-start align-items-center">
+          <div class="col-11">
+            <input type="text" class="form-control" placeholder="搜尋關鍵字"
+            v-model="keyword" @keydown.enter="search">
+
+          </div>
+
+          <div class="col-1">
+            <button class="btn btn-primary border-0">
+              <i class="bi bi-search" @click.prevent="search"></i>
+            </button>
+          </div>
+
         </div>
+      </div> -->
+
+      <div class="input-group d-lg-none mt-2">
+        <input type="text" class="form-control" placeholder="搜尋關鍵字"
+          v-model="keyword" @keydown.enter="search">
+        <button class="btn btn-primary border-0 rounded">
+          <i class="bi bi-search" @click.prevent="search"></i>
+        </button>
       </div>
       <!-- 1.5 下拉選單 <SELECT> -->
 
@@ -86,7 +104,7 @@
             </select>
             
             <router-link :to="{ name:'SelectedResults' }" >
-              <button class="btn btn-md">
+              <button class="btn btn-primary border-0">
                 <span><i class="bi bi-search" @click.prevent="select"></i></span>
               </button>
             </router-link>
