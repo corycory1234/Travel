@@ -1,0 +1,87 @@
+@import "./common.scss";
+
+  .navBar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // .nav-links {
+    //   display: flex;
+    //   justify-content: flex-end;
+    // }
+  }
+
+  // 1.2 右邊導覽列
+  .header-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    .link-img {
+      margin-right: 0.5rem;
+      width: 100%;
+    }
+  }
+    .spot {
+      padding-left: 0.625rem;
+      color: $pink;
+    }
+    .food {
+      padding-left: 0.625rem;
+      color: $orange;
+    }
+    .traffic {
+      padding-left: 0.625rem;
+      color: $green;
+    }
+
+
+// 2. 平板
+@media (min-width: 768px) {
+  // 2.1 調整左右padding
+
+    // .navBar {
+    //   justify-content: space-between;
+    //   padding-top: .1rem;
+    //   .nav-links {
+    //     display: flex;
+    //     justify-content: flex-end;
+    //   }
+    // };
+    // 2.2 調整<input>寬度
+    // .form-control {
+    //   width: 72%;
+    // };
+
+    // 2.4 【平板】顯示下拉選單
+    // .selection {
+    //   // 2.5 寬度要設置, .不然selection跑不出
+    //   width: 100%;
+    //   display: flex !important;
+    //   justify-content: center;
+    //   align-items: center;
+    //   .form-select {
+    //     // width: 30%;
+    //   };
+    // };
+
+};
+
+
+// 4. 平板手機 搜尋按鈕 hover
+button {
+  background-color: $pink;
+  &:hover {
+    background-color: $pink;
+    span{
+      color: #fff;
+    }
+  }
+}
+
+// 5. 
+.activeTrue {
+  color: #FF1D6C;
+}
+.activeFalse {
+  color: #ACACAC;
+}

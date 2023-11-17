@@ -1,0 +1,105 @@
+@import "./_common.scss";
+
+// 1. 左陰影
+// .activity-card:before {
+//   background-image: url("../assets/pics/Activity/Vector2.png");
+//   left: -7px;
+// };
+
+// 2. 右陰影
+// .activity-card:after {
+//   right: 0;
+//   background-image: url("../assets//pics/Activity/Vector1.png");
+// }
+
+// 3. 左右陰影設定
+// .activity-card:before, .activity-card:after {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   width: 50%;
+//   height: 20%;
+//   bottom: -40px;
+//   background-position-y: bottom;
+//   z-index: -1;
+// }
+
+// 1. 卡片取消Border
+  // .card-body {
+  //   flex: 1 1 auto;
+  //   color: var(--bs-card-color);
+  //   // padding: 0;
+  //   // 1.1 修改Padding, 內縮
+  //   padding: 5px;
+  // }
+
+
+// 2. 圖片高度
+.activity-card-pic {
+  height: 100%;
+  width: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+};
+// @media(min-width: 768px) {
+//   .activity-card-pic {
+//     img {
+//       height: 150px;
+//     }
+//   };
+// }
+// @media(min-width: 992px) {
+//   .activity-card-pic {
+//     img {
+//       height: 213px;
+//     }
+//   };
+// }
+
+// 3. 活動文字設定
+.activity-card-content {
+  font-size: 14px;
+  color: #acacac;
+  height: 102px;
+}
+
+// 4. 地標顏色
+.location {
+  color: $pink;
+  
+}
+
+// 5. 縮排活動文字內容
+.truncate {
+  display: -webkit-box; /*過多文字「...」*/
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 5; /*顯示幾行*/
+  -webkit-box-orient: vertical; /*過多文字「...」*/
+}
+
+// 5. 平板
+// @media (max-width: 768px) {
+//     .activity-card-content {
+//       display: none;
+//     };
+//     .btn {
+//       display: none;
+//     };
+//  };
+
+// 5. 手機
+//  @media (max-width: 414px) {
+
+//     .activity-card-content {
+//       display: none;
+//     };
+//     .btn {
+//       display: none;
+//     };
+
+//  };
+ 

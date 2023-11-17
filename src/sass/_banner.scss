@@ -1,0 +1,45 @@
+@import "./_common.scss";
+.banner-bg {
+  background-color: #fff;
+  // 1. BANNER 背景圖
+  // .bg-evening {
+  //   background-image: url("/src/assets/pics/MaskPics/MaskGroup.png");
+  // };
+  // 1.1 背景圖寬高設定, FLEX排版 文字&搜尋BAR
+  .scenic-spot-bg {
+    width: 100%;
+    min-height: 491px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // 1.2 BANNER 行銷文字
+    .h1 {
+      font-weight: bold;
+    }
+    .pinkSpan {
+      color: $pink;
+    }
+    // 2. BANNER 下拉選單
+    button {
+      background-color: $pink;
+    }
+  };
+}
+
+// 768裝置
+@media (max-width: 768px) {
+  .position-relative {
+    // 1. 隱藏
+    display: none;
+  }
+};
+
+// 412裝置
+@media (max-width: 412px) {
+  .position-relative {
+    // 1. 隱藏
+    display: none;
+  }
+};

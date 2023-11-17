@@ -1,0 +1,37 @@
+@import "./common.scss";
+body {
+  background-color: #F6F7FB !important;
+}
+.square {
+  color: $orange;
+};
+.card {
+  // border: none;
+  background-color: #fff;
+
+  .card-body {
+    flex: 1 1 auto;
+    // padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    color: var(--bs-card-color);
+    // 2. 調整padding
+    padding: 0;
+
+    h5 {
+      font-size: .8rem;
+      font-weight: bold;
+    };
+    p {
+      font-size: .7rem;
+    }
+  }
+}
+
+.foodPic {
+  height: 100%;
+  width: 100%;
+  img {
+    height: 100%; 
+    width: 100%;
+    object-fit: contain;
+  }
+}

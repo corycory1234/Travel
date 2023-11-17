@@ -1,0 +1,52 @@
+@import "./_common.scss";
+
+.triangle {
+  color: $pink;
+}
+
+// 16. 第二版輪播圖
+.carouselCard {
+  .carouselCard-wrap {
+    overflow: auto;
+  };
+  .carouselCard-wrap::-webkit-scrollbar {
+    display: none;
+  };
+  .carouselCard-list {
+    transition: all .6s ease;
+  }
+}
+
+// 17. 第二版輪播圖, 滑動卡片動畫
+.hotCity-area .card:hover {
+  img {
+    transform: scale(1.05);
+    transition: .5s;
+  }
+}
+
+// 18. 輪播圖按鈕
+.carouselBtn {
+  background-color: #0d0b0c;
+  color: #fff;
+  box-shadow: 0px 4px 3px rgba(13, 11, 12, 0.2);
+  border-radius: 6px;
+  padding: 1px  5px 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+  &:hover {
+    background-color: $pink;
+  }
+  &.disabled {
+    background-color: #fff;
+    color: lightgrey;
+  }
+}
+.carouselBtnLeft {
+  left: -3%;
+}
+.carouselBtnRight {
+  right: -3%;
+}
+
+

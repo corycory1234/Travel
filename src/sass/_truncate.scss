@@ -1,0 +1,7 @@
+.truncate {
+  display: -webkit-box; /*過多文字「...」*/
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 5; /*顯示幾行*/
+  -webkit-box-orient: vertical; /*過多文字「...」*/
+}

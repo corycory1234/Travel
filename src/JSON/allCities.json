@@ -1,0 +1,86 @@
+[
+  {
+    "CityName": "臺北市",
+    "Value": "Taipei"
+  },
+  {
+    "CityName": "新北市",
+    "Value": "NewTaipei"
+  },
+  {
+    "CityName": "桃園市",
+    "Value": "Taoyuan"
+  },
+  {
+    "CityName": "臺中市",
+    "Value": "Taichung"
+  },
+  {
+    "CityName": "臺南市",
+    "Value": "Tainan"
+  },
+  {
+    "CityName": "高雄市",
+    "Value": "Kaohsiung"
+  },
+  {
+    "CityName": "基隆市",
+    "Value": "Keelung"
+  },
+  {
+    "CityName": "新竹市",
+    "Value": "Hsinchu"
+  },
+  {
+    "CityName": "新竹縣",
+    "Value": "HsinchuCounty"
+  },
+  {
+    "CityName": "苗栗縣",
+    "Value": "MiaoliCounty"
+  },
+  {
+    "CityName": "彰化縣",
+    "Value": "ChanghuaCounty"
+  },
+  {
+    "CityName": "南投縣",
+    "Value": "NantouCounty"
+  },
+  {
+    "CityName": "雲林縣",
+    "Value": "YunlinCounty"
+  },
+  {
+    "CityName": "嘉義縣",
+    "Value": "ChiayiCounty"
+  },
+  {
+    "CityName": "嘉義市",
+    "Value": "Chiayi"
+  },
+  {
+    "CityName": "屏東縣",
+    "Value": "PingtungCounty"
+  },
+  {
+    "CityName": "宜蘭縣",
+    "Value": "YilanCounty"
+  },
+  {
+    "CityName": "花蓮縣",
+    "Value": "HualienCounty"
+  },
+  {
+    "CityName": "臺東縣",
+    "Value": "TaitungCounty"
+  },
+  {
+    "CityName": "金門縣",
+    "Value": "KinmenCounty"
+  },
+  {
+    "CityName": "澎湖縣",
+    "Value": "PenghuCounty"
+  }
+]

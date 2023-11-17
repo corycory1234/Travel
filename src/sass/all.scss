@@ -1,0 +1,32 @@
+// @import "/bootstrap/scss/bootstrap.scss";
+// 1. Bootstrap引用失敗? ↓
+// @import "/node_modules/bootstrap/scss/bootstrap.scss";
+
+// 1. 共用變數引入
+@import "./_common.scss";
+// 2. RESET引入
+@import "./_reset.scss";
+// 3. HEADER引入
+@import "../sass/_header.scss";
+// 4. BANNER引入
+@import "../sass/_banner.scss";
+// 5. CITY引入
+@import "../sass/_city.scss";
+// 6. ACTIVITY引入
+@import "../sass/_activity.scss";
+// 7. FOOD引入
+@import "../sass/_food.scss";
+// 8. FOOTER引入
+@import "../sass/_footer.scss";
+// 9. MODAL引入
+@import "../sass/_Modal.scss";
+// 10. HOTEL引入
+@import "../sass/hotel.scss";
+// 11. Loading動畫引入
+@import "../sass/loading.scss";
+// 12. 限制文字5行，呈現「...」
+@import "../sass/truncate.scss";
+
+
+
+
