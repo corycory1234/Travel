@@ -103,7 +103,7 @@
     </div>
 
   <!--4. 剩餘到站時間、公車站名 -->
-  <div class="container py-5 ">
+  <div class="container py-5 " v-if="renderGoData.length >0 || renderBackData.length >0">
     <div v-for="(item, index) in renderGoData" :key="index" 
     class="row align-items-center justify-content-md-center gx-0" v-if="goFlag">
       <p class="col-4 col-md-2 rounded p-2 text-center" 
@@ -117,18 +117,68 @@
     </div>
 
     <div v-for="(item) in renderBackData" 
-    class="row align-items-center justify-content-lg-center gx-0" v-if="backFlag">
-      <p class="col-4 rounded p-2 text-center"
+    class="row align-items-center justify-content-md-center gx-0" v-if="backFlag">
+      <p class="col-4 col-md-2 rounded p-2 text-center"
       :class="{
         'arriving': item.time === 0,
         'coming' : item.time <=1 && item.time > 0,
         'onTheWay' : item.time > 1,
         'noDepart' : !item.time 
       }">{{item.timeText}} </p> 
-      <p class="col-8 px-2">{{item.stops}}</p>
+      <p class="col-8 col-md-2 px-2">{{item.stops}}</p>
     </div>
-
   </div>
+
+  <!--5. 「預設」到站時間、公車站名 -->
+    <div class="container" v-if="renderGoData.length <=0 || renderBackData.length <=0">
+      <div 
+      class="row align-items-center justify-content-md-center gx-0" >
+        <p class="col-4 col-md-2 rounded p-2 text-center noDepart">未發車</p> 
+        <p class="col-8 col-md-2 ps-2">西門町</p>
+      </div>
+
+      <div 
+      class="row align-items-center justify-content-md-center gx-0">
+        <p class="col-4 col-md-2 rounded p-2 text-center noDepart">未發車</p> 
+        <p class="col-8 col-md-2 ps-2">台北車站</p>
+      </div>
+
+      <div 
+      class="row align-items-center justify-content-md-center gx-0">
+        <p class="col-4 col-md-2 rounded p-2 text-center onTheWay">15分鐘</p> 
+        <p class="col-8 col-md-2 ps-2">捷運忠孝新生站</p>
+      </div>
+
+      <div 
+      class="row align-items-center justify-content-md-center gx-0">
+        <p class="col-4 col-md-2 rounded p-2 text-center onTheWay">10分鐘</p> 
+        <p class="col-8 col-md-2 ps-2">忠孝SOGO百貨</p>
+      </div>
+
+      <div 
+      class="row align-items-center justify-content-md-center gx-0">
+        <p class="col-4 col-md-2 rounded p-2 text-center coming">即將到站</p> 
+        <p class="col-8 col-md-2 ps-2">國父紀念館</p>
+      </div>
+
+      <div 
+      class="row align-items-center justify-content-md-center gx-0">
+        <p class="col-4 col-md-2 rounded p-2 text-center arriving">進站中</p> 
+        <p class="col-8 col-md-2 ps-2">市政府</p>
+      </div>
+
+      <div 
+      class="row align-items-center justify-content-md-center gx-0">
+        <p class="col-4 col-md-2 rounded p-2 text-center onTheWay">5分鐘</p> 
+        <p class="col-8 col-md-2 ps-2">台北101</p>
+      </div>
+
+      <div 
+      class="row align-items-center justify-content-md-center gx-0">
+        <p class="col-4 col-md-2 rounded p-2 text-center onTheWay">10分鐘</p> 
+        <p class="col-8 col-md-2 ps-2">象山</p>
+      </div>
+    </div>
 
   <Footer></Footer>
 </template>
@@ -175,7 +225,7 @@ const routeName = ref(""); // v-model 公車路線
 //   headers: {"authorization": "Bearer " + accessTokenStr,}
 // };
 
-// 1.「指定縣市 - 所有」公車路線 (Watch 觸發更新)(先5筆, 不然資料太大...)
+// 1.「指定縣市 - 所有」公車路線 (Watch 觸發更新)
 const routeData = ref([]); // 所有公車路線資料
 const getBusRoutes = async () => {
   const accessTokenStr = await token.getToken();
@@ -183,15 +233,15 @@ const getBusRoutes = async () => {
   headers: {"authorization": "Bearer " + accessTokenStr,}
   };
 
-  const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City/${city.value}?%24top=5&%24format=JSON`;
+  const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City/${city.value}?%24format=JSON`;
   axios.get(apiUrl, config)
   .then((response) => {
     routeData.value = response.data;
-    console.log("指定縣市公車路線",routeData.value);
+    // console.log("指定縣市公車路線",routeData.value);
   })
 };
 
-// 2.「預估到站時間 - 指定公車」
+// 2.「預估到站時間 - 指定公車」(有些縣市的EstimateTime格式不一致, 導致無法成功打出API)
 const goBusData = ref([]); // 公車(去程)大Arr
 const backBusData = ref([]);// 公車(返程)大Arr
 const secs = ref(60);
@@ -208,7 +258,7 @@ const getEstimation = async () => {
     axios.get(apiUrl, config)
     .then((response) => {
       const estimation = response.data;
-      // console.log(estimation);
+      // console.log(estimation.value);
   
       // 2.1 撈出公車 Direction「去程0」、「回程1」
       const goBus = estimation.filter((item) => !item.Direction);
@@ -245,7 +295,6 @@ const getEstimation = async () => {
 };
 
 // 3. 取得「指定公車 - 各公車站(起終點站排序)」
-// const stops = ref([]);
 const renderGoData = ref([]);
 const renderBackData = ref([]);
 const time = ref(0);
@@ -264,7 +313,6 @@ const getStops = async () => {
   axios.get(apiUrl, config)
   .then((response) => {
   const stops = response.data;
-    // console.log("stops陣列資料",stops);
     // 3.1 Direction:0 去程 - 正確公車站排序
     stops[0].Stops.forEach((stop) => {
       goBusData.value.forEach((goBus) => {
