@@ -93,18 +93,22 @@ const currentOptions = route.meta.options || [];
 
 // 4. 切換頁面, Banner圖切換
 import {useRouter} from "vue-router";
+import backgroundImg1 from "@/assets/pics/MaskPics/MaskGroup.png";
+import backgroundImg2 from "@/assets/pics/MaskPics/MaskGroup2.png";
 const router = useRouter();
-const backgroundImg = ref("/src/assets/pics/MaskPics/MaskGroup.png");
+const backgroundImg = ref("");
 if(router.currentRoute.value.name === "FoodTravel" || 
   router.currentRoute.value.name === "SearchedFoods" ||
   router.currentRoute.value.name === "SelectedResults2") {
   isLoading.value = true;
-  backgroundImg.value = "/src/assets/pics/MaskPics/MaskGroup2.png";
+  // backgroundImg.value = "/src/assets/pics/MaskPics/MaskGroup2.png";
+  backgroundImg.value = backgroundImg2
   isLoading.value = false;
 }
 else{
   isLoading.value = true;
-  backgroundImg.value = "/src/assets/pics/MaskPics/MaskGroup.png";
+  // backgroundImg.value = "/src/assets/pics/MaskPics/MaskGroup.png";
+  backgroundImg.value = backgroundImg1;
   isLoading.value = false;
 };
 
