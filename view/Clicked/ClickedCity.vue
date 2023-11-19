@@ -74,6 +74,7 @@
     </Pagination>
   </div>
   <Modal ref="refModal"></Modal>
+  <NotFound v-if="paginatedArr.length === 0"></NotFound>
   <Footer></Footer>
   <Loading :active="isLoading">
     <div class="d-flex justify-content-between align-items-center"
@@ -83,6 +84,7 @@
       <div class="loading loading-circle"></div>
     </div>
   </Loading>
+
 </template>
 
 <style lang="scss" scoped>
@@ -167,5 +169,6 @@ import useSearchStore from "/src/stores/SearchStore.js";
 const searchStore = useSearchStore();
 const {searchedArr} = storeToRefs(searchStore);
 
-
+// 9. 搜尋失敗, 顯示NotFound
+import NotFound from "/src/components/NotFound.vue";
 </script>

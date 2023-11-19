@@ -27,30 +27,28 @@ export default defineStore("useSelectStore", () => {
     router.currentRoute.value.name === "SearchedActivities" 
     || router.currentRoute.value.name === "ClickedCity") {
       // 1.1 沒選就return
-      if (selectedOption1.value ==="類別") {
-        console.log("請SELECT選項!"); return;
-      };
+      if (selectedOption1.value ==="類別") {return;};
   
   // 1.2 選活動, 取指定活動, 若沒指定, 取所有活動
   if (selectedOption1.value === "活動") {
     apiUrl = selectedOption2.value 
-    ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${selectedOption2.value}?%24filter=Picture%2FPictureUrl1%20ne%20null&%24format=JSON`
-    : "https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity?%24top=30&%24format=JSON"
+    ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${selectedOption2.value}?%24format=JSON`
+    : "https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity?%24format=JSON"
   }
   else if (selectedOption1.value === "景點") {
     apiUrl = selectedOption2.value
-    ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot/${selectedOption2.value}?%24filter=Picture%2FPictureUrl1%20ne%20null&%24format=JSON`
-    : "https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot?%24top=30&%24format=JSON"
+    ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot/${selectedOption2.value}?%24format=JSON`
+    : "https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot?%24format=JSON"
   }
 
   // 1.3 活動or景點 搭配「全部縣市」API
   if (selectedOption1.value === "活動") {
     if (selectedOption2.value === "不分縣市") {
-      apiUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24format=JSON";
+      apiUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity?%24format=JSON";
     } 
   } else if (selectedOption1.value === "景點") {
     if (selectedOption2.value === "不分縣市") {
-      apiUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24format=JSON";
+      apiUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot?%24format=JSON";
     } 
   }
 
@@ -63,7 +61,7 @@ export default defineStore("useSelectStore", () => {
   await axios.get(apiUrl, config)
     .then((response) => {
       dataArr.value = response.data;
-      console.log("成功, 拿到SELECT資料",dataArr.value);
+      // console.log("成功, 拿到SELECT資料",dataArr.value);
       router.push({name: "SelectedResults"});
     })
     .catch((error)=>{console.log("SELECT失敗", error);})
@@ -80,31 +78,29 @@ export default defineStore("useSelectStore", () => {
   router.currentRoute.value.name === "SearchedFoods") {
     // 2.1 沒選, 就return
     if (selectedOption1.value ==="類別" || (selectedOption2.value !== "不分縣市" && 
-    selectedOption2.value === "不分縣市")) {
-      console.log("請SELECT選項!"); return;
-    };
+    selectedOption2.value === "不分縣市")) {return;};
 
     if (selectedOption1.value === "美食") {
-      console.log("已選到美食");
+      // console.log("已選到美食");
       apiUrl = selectedOption2.value // <select>依據所選縣市, 切換不同縣市Value
-      ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/Restaurant/${selectedOption2.value}?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24format=JSON`
-      : "https://tdx.transportdata.tw/api/basic/v2/Tourism/Restaurant?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24format=JSON"
+      ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/Restaurant/${selectedOption2.value}?%24format=JSON`
+      : "https://tdx.transportdata.tw/api/basic/v2/Tourism/Restaurant?%24format=JSON"
     }
     else if (selectedOption1.value === "住宿") {
-      console.log("已選到住宿");
+      // console.log("已選到住宿");
       apiUrl = selectedOption2.value // <select>依據所選縣市, 切換不同縣市Value
-      ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/Hotel/${selectedOption2.value}?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24format=JSON`
-      : "https://tdx.transportdata.tw/api/basic/v2/Tourism/Hotel?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24top=100&%24format=JSON"
+      ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/Hotel/${selectedOption2.value}?%24format=JSON`
+      : "https://tdx.transportdata.tw/api/basic/v2/Tourism/Hotel?%24format=JSON"
     }
     // 2.2 「美食」搭配「全部縣市」API
     if (selectedOption1.value === "美食") {
       if (selectedOption2.value === "不分縣市") {
-        apiUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism/Restaurant?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24format=JSON";
+        apiUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism/Restaurant?%24format=JSON";
       }
     }
     else if (selectedOption1.value === "住宿") {
       if (selectedOption2.value === "不分縣市") {
-        apiUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism/Hotel?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24format=JSON";
+        apiUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism/Hotel?%24format=JSON";
       }
     };
 
@@ -117,7 +113,7 @@ export default defineStore("useSelectStore", () => {
     await axios.get(apiUrl, config)
     .then((response) => {
       dataArr.value = response.data;
-      console.log("成功, 拿到SELECT資料",dataArr.value);
+      // console.log("成功, 拿到SELECT資料",dataArr.value);
       router.push({name: "SelectedResults2"});
     })
     .catch((error)=>{console.log("SELECT失敗", error);})
