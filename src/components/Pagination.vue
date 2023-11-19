@@ -3,22 +3,34 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         <li class="page-item" @click.prevent="prevPage">
-          <a class="page-link" href="#">
+          <a class="page-link rounded" href="#"
+          :class="currentPage === 1 ? 'paginationPrev' : 'paginationNext'">
             <i class="bi bi-caret-left-fill fs-6"></i>
           </a>
         </li>
 
-        <li class="page-item"
+        <!-- 顯示所有頁碼 1-200多... 導致破版 -->
+        <!-- <li class="page-item"
         v-for="(page) in pages" :key="page"
         :class="{'active': page === currentPage}"
         @click.prevent="changePage(page)"
         >
           <a class="page-link" href="#">{{ page }}</a>
+        </li> -->
+
+        <!-- 只顯示"當前頁碼" -->
+        <li class="page-item active px-3">
+          <a class="page-link 
+          text-black
+          fw-bold 
+          paginationBg 
+          border-0" href="#">{{ currentPage }}</a>
         </li>
 
 
         <li class="page-item" @click.prevent="nextPage">
-          <a class="page-link" href="#">
+          <a class="page-link rounded" href="#"
+          :class="currentPage < totalPages ? 'paginationNext' : 'paginationPrev'">
             <i class="bi bi-caret-right-fill fs-6"></i>
           </a>
         </li>
@@ -26,6 +38,20 @@
     </nav>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.paginationBg {
+  background-color: transparent !important;
+}
+.paginationNext {
+  color:#FFFFFF;
+  background-color: #FF1D6C;
+}
+.paginationPrev {
+  background-color:#0D0B0C;
+  color: #FFFFFF;
+}
+</style>
 
 <script setup>
   import {ref, computed, onMounted, watch} from "vue";
