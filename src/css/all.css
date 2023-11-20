@@ -97,16 +97,6 @@ table {
   color: #007350;
 }
 
-button {
-  background-color: #ff1d6c;
-}
-button:hover {
-  background-color: #ff1d6c;
-}
-button:hover span {
-  color: #fff;
-}
-
 .activeTrue {
   color: #FF1D6C;
 }

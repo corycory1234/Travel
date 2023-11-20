@@ -32,21 +32,26 @@
     <ul class="nav justify-content-between shadow-sm d-md-none bg-white w-100 rounded my-1">
         <li class="nav-item">
           <router-link to="/view/Home.vue" 
-            class="nav-link p-2 activeTrue" 
-            aria-current="page" href="#">景點活動
+            class="nav-link p-2" 
+            aria-current="page"
+            :class="{ 'activeTrue': isRouteActive('/view/Home.vue'), 
+            'activeFalse': !isRouteActive('/view/Home.vue')}">景點活動
           </router-link>
         </li>
 
         <li class="nav-item">
           <router-link to="/view/FoodTravel.vue" 
-            class="nav-link p-2 activeTrue" 
-            href="#">美食住宿
+            class="nav-link p-2" 
+            :class="{ 'activeTrue': isRouteActive('/view/FoodTravel.vue'), 
+            'activeFalse': !isRouteActive('/view/FoodTravel.vue')}">美食住宿
           </router-link>
         </li>
 
       <li class="nav-item">
         <router-link to="/view/BusRoute/BusRoute.vue" 
-        class="nav-link p-2 activeTrue" href="#">景點交通
+        class="nav-link p-2"
+        :class="{'activeTrue': isRouteActive('/view/BusRoute/BusRoute.vue'), 
+          'activeFalse': !isRouteActive('/view/BusRoute/BusRoute.vue')}">景點交通
         </router-link>
       </li>
     </ul>
@@ -206,6 +211,9 @@
 }
 .activeTrue {
   color: #FF1D6C;
+}
+.activeFalse {
+  color: #ACACAC;
 }
 </style>
 
@@ -391,6 +399,13 @@ const getEstimationAndCountDown = () => {
   getEstimation();
   resetTimers();
 };
+
+// 7. Nav切換<router-link>, 切換文字顏色
+  import {useRoute} from "vue-router";
+  const isRouteActive = (route) => {
+  const currentRoute = useRoute();
+  return currentRoute.path === route;
+}
 
 
 watch(

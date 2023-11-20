@@ -34,22 +34,29 @@
           <li class="nav-item">
             <router-link to="/view/Home.vue" 
             class="nav-link p-2 activeTrue" 
-            aria-current="page" href="#">
+            aria-current="page" 
+            :class="{ 'activeTrue': isRouteActive('/view/Home.vue'), 
+            'activeFalse': !isRouteActive('/view/Home.vue')}">
             景點活動
           </router-link>
           </li>
 
           <li class="nav-item">
             <router-link to="/view/FoodTravel.vue" 
-            class="nav-link p-2 activeTrue" 
-            href="#">
+            class="nav-link p-2" 
+            
+
+            :class="{ 'activeTrue': isRouteActive('/view/FoodTravel.vue'), 
+            'activeFalse': !isRouteActive('/view/FoodTravel.vue')}">
             美食住宿
             </router-link>
           </li>
 
         <li class="nav-item">
           <router-link to="/view/BusRoute/BusRoute.vue" 
-          class="nav-link p-2 activeTrue" href="#"
+          class="nav-link p-2" 
+          :class="{'activeTrue': isRouteActive('/view/BusRoute/BusRoute.vue'), 
+          'activeFalse': !isRouteActive('/view/BusRoute/BusRoute.vue')}"
          >景點交通
           </router-link>
         </li>
@@ -105,7 +112,7 @@
             
             <router-link :to="{ name:'SelectedResults' }" >
               <button class="btn btn-primary border-0">
-                <span><i class="bi bi-search" @click.prevent="select"></i></span>
+                <i class="bi bi-search" @click.prevent="select"></i>
               </button>
             </router-link>
 
@@ -145,4 +152,9 @@ import {useRoute} from "vue-router";
 const route = useRoute();
 const currentOptions = route.meta.options || [];
 
+// 4. Nav切換<router-link>, 切換文字顏色
+const isRouteActive = (route) => {
+  const currentRoute = useRoute();
+  return currentRoute.path === route;
+}
 </script>
