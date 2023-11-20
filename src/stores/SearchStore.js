@@ -24,7 +24,7 @@ export default defineStore ("useSearchStore", () => {
       await axios.get(activityApi, headers)
       .then((response) => {
         allActivitiesArr.value = response.data; // 裝所有觀光活動
-        console.log("成功, 拿到所有觀光活動", response);
+        // console.log("成功, 拿到所有觀光活動", response);
         eachPageLength.value = []; 
         // 各 20 筆觀光活動小陣列物件 in eachPageLength大陣列
         toGetAllActvitiesByPages(allActivitiesArr.value)
@@ -41,7 +41,7 @@ export default defineStore ("useSearchStore", () => {
       await axios.get(foodApi, headers)
       .then((response) => {
         allFoodsArr.value = response.data; // 裝所有觀光活動
-        console.log("成功, 拿到所有美食", response);
+        // console.log("成功, 拿到所有美食", response);
         // 各 20 筆美食小陣列物件 in eachPageLength大陣列 
         toGetAllActvitiesByPages(allFoodsArr.value)
       })
@@ -86,7 +86,7 @@ export default defineStore ("useSearchStore", () => {
   const isLoading = ref(false); // overlay加載動畫
   
   const search = async () => {
-    if(!keyword.value.replace(/^\s+|\s+$/gm, '')){console.log("禁止空字串 空白字串"); return};
+    if(!keyword.value.replace(/^\s+|\s+$/gm, '')){return};
     searchedArr.value = [];
     
     // 2.1 isLoading動畫加載
@@ -101,7 +101,7 @@ export default defineStore ("useSearchStore", () => {
     || router.currentRoute.value.name === "ClickedCity") {
       allActivitiesArr.value.filter((item) => {
        if(item.ActivityName.match(keyword.value)) {
-        console.log("找到被搜尋的活動~~~~", `共${searchedArr.value.length}筆`);
+        // console.log("找到被搜尋的活動~~~~", `共${searchedArr.value.length}筆`);
           searchedArr.value.push(item);}
      });
       // 2.2 得到searchedArr後, 路由進入「被搜尋活動」之元件
@@ -116,7 +116,8 @@ export default defineStore ("useSearchStore", () => {
       allFoodsArr.value.filter((item) => {
         if(item.RestaurantName.match(keyword.value)) {
           searchedArr.value.push(item);
-          console.log("找到搜尋後的美食", searchedArr.value);};
+          // console.log("找到搜尋後的美食", searchedArr.value);
+        };
       });
       // 2.4 得到searchedArr後, 路由進入「被搜尋活動」之元件
       router.push({name: "SearchedFoods"});

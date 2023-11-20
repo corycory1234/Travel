@@ -1,7 +1,7 @@
 <template>
   <Nav></Nav>
   <Banner></Banner>
-  <div class="container my-5">
+  <div class="container my-5" v-if="searchedArr.length > 0">
     <div>
       <h3 class="h5"><i class="bi bi-square-fill square me-2"></i>美食</h3>
     </div>

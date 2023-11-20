@@ -19,11 +19,16 @@ export default defineStore ("useClickStore", () => {
 
     const accessTokenStr = await token.getToken();
     const headers = { authorization: "Bearer " + accessTokenStr} ;
-    const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${city}?%24filter=Picture%2FPictureUrl1%20ne%20null%20&%24top=30&%24format=JSON`;
+    const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${city}?%24format=JSON`;
     axios.get(apiUrl, headers)
       .then((response) => {
         carouselArr.value = response.data;
-        console.log(carouselArr.value);
+        // 1.2 拿掉"to see official site 字串"
+        carouselArr.value.forEach((item) => {
+          if(item.Location === "to see the official site") {
+            item.Location = "";
+          }
+        })
       })
       .catch((error) => {
         console.log("錯誤,沒拿到輪播圖City", error);

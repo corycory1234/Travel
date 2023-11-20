@@ -2,9 +2,9 @@
   <Nav></Nav>
   <Banner></Banner>
   <City></City>
-  <div class="container my-5">
+  <div class="container my-5" v-if="carouselArr.length > 0">
     <div>
-      <h3 class="h5 "><i class="bi bi-caret-up-fill triangle me-2"></i>熱門活動</h3>
+      <h3 class="h5 fw-bold"><i class="bi bi-caret-up-fill triangle me-2"></i>熱門活動</h3>
     </div>
     <div class="row gx-3">
 
@@ -40,7 +40,7 @@
                     <div class="d-flex flex-lg-row justify-content-lg-between align-items-lg-center 
                     flex-column">
                           <i class="bi bi-geo-alt-fill me-1 location text-truncate">
-                            <span class="text-dark fw-bold">{{ item.Location || item.City }}</span>
+                            <span class="text-dark fw-bold">{{ item.Location || item.City || item.Address }}</span>
                           </i>
                           <button class="btn btn-outline-danger subtitle-1 text-truncate
                           d-none d-lg-block" 

@@ -1,7 +1,7 @@
 <template>
   <Nav></Nav>
   <Banner></Banner>
-  <div class="container my-5">
+  <div class="container my-5" v-if="searchedArr.length > 0">
     <div>
       <h3 class="h5 fw-bold"><i class="bi bi-caret-up-fill triangle me-2"></i>熱門活動</h3>
     </div>
@@ -142,7 +142,7 @@ const totalPages = computed(() => {
  return Math.ceil(searchedArr.value.length / itemsPerPage.value);
 });
 
-console.log(eachPageLength.value);
+// console.log(eachPageLength.value);
 
 // 8. 搜尋失敗, 顯示NotFound
 import NotFound from "/src/components/NotFound.vue";
