@@ -68,13 +68,13 @@
 
 
 // 4. 平板手機 搜尋按鈕 hover
-// button {
-//   background-color: $pink;
-//   &:hover {
-//     background-color: $pink;
-//       color: #fff;
-//   }
-// }
+button {
+  background-color: $pink;
+  &:hover {
+    background-color: $pink;
+      color: #fff;
+  }
+} 
 
 // 5. 
 .activeTrue {

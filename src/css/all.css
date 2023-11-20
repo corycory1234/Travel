@@ -97,6 +97,14 @@ table {
   color: #007350;
 }
 
+button {
+  background-color: #ff1d6c;
+}
+button:hover {
+  background-color: #ff1d6c;
+  color: #fff;
+}
+
 .activeTrue {
   color: #FF1D6C;
 }
@@ -131,6 +139,7 @@ table {
   color: #ff1d6c;
 }
 .banner-bg .scenic-spot-bg button {
+  color: #fff;
   background-color: #ff1d6c;
 }
 
