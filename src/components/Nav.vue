@@ -44,8 +44,6 @@
           <li class="nav-item">
             <router-link to="/view/FoodTravel.vue" 
             class="nav-link p-2" 
-            
-
             :class="{ 'activeTrue': isRouteActive('/view/FoodTravel.vue'), 
             'activeFalse': !isRouteActive('/view/FoodTravel.vue')}">
             美食住宿
@@ -117,11 +115,6 @@
             </router-link>
 
         </div>
-
-
-
-
-    
   </div>
 </template>
 

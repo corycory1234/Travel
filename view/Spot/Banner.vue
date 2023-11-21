@@ -101,13 +101,11 @@ if(router.currentRoute.value.name === "FoodTravel" ||
   router.currentRoute.value.name === "SearchedFoods" ||
   router.currentRoute.value.name === "SelectedResults2") {
   isLoading.value = true;
-  // backgroundImg.value = "/src/assets/pics/MaskPics/MaskGroup2.png";
   backgroundImg.value = backgroundImg2
   isLoading.value = false;
 }
 else{
   isLoading.value = true;
-  // backgroundImg.value = "/src/assets/pics/MaskPics/MaskGroup.png";
   backgroundImg.value = backgroundImg1;
   isLoading.value = false;
 };
