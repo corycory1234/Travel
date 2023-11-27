@@ -15,12 +15,17 @@ export default defineStore ("useClickStore", () => {
     await new Promise((resolve) => {
       setTimeout(resolve, 1000);
     })
-
+    const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${city}?%24filter=Picture%2FPictureUrl1%20ne%20null&%24format=JSON`;
     const reg = /.jpg/;
     const accessTokenStr = await token.getToken();
-    const headers = { authorization: "Bearer " + accessTokenStr} ;
-    const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${city}?%24filter=Picture%2FPictureUrl1%20ne%20null&%24format=JSON`;
-    axios.get(apiUrl, headers)
+    const config = {
+      url: apiUrl,
+      method: "get",
+      headers: {
+        "authorization": "Bearer " + accessTokenStr
+        }
+    }
+    await axios(config)
       .then((response) => {
         carouselArr.value = response.data;
         // 1.2 拿掉"to see official site 字串"
