@@ -108,6 +108,9 @@
     </div>
 
   <!--4. 剩餘到站時間、公車站名 -->
+  <div class="container" :class="renderGoData.length >0 || renderBackData.length >0 ? 'height' : 'vhHeight'">
+
+
   <div class="container py-5 " v-if="renderGoData.length >0 || renderBackData.length >0">
     <div v-for="(item, index) in renderGoData" :key="index" 
     class="row align-items-center justify-content-md-center gx-0" v-if="goFlag">
@@ -133,9 +136,10 @@
       <p class="col-8 col-md-2 px-2">{{item.stops}}</p>
     </div>
   </div>
+</div>
 
   <!--5. 「預設」到站時間、公車站名 -->
-    <div class="container" v-if="renderGoData.length <=0 || renderBackData.length <=0">
+    <!-- <div class="container" v-if="renderGoData.length <=0 || renderBackData.length <=0">
       <div 
       class="row align-items-center justify-content-md-center gx-0" >
         <p class="col-4 col-md-2 rounded p-2 text-center noDepart">未發車</p> 
@@ -183,7 +187,7 @@
         <p class="col-4 col-md-2 rounded p-2 text-center onTheWay">10分鐘</p> 
         <p class="col-8 col-md-2 ps-2">象山</p>
       </div>
-    </div>
+    </div> -->
 
   <Footer></Footer>
 </template>
@@ -215,6 +219,15 @@
 .activeFalse {
   color: #ACACAC;
 }
+// 讓公車路線佔滿畫面, 不讓<Footer>走向畫面中間
+.vhHeight{
+  height: 100vh;
+}
+// 讓公車路線佔滿畫面, 不讓<Footer>走向畫面中間
+.height{
+  height: 100%;
+}
+
 </style>
 
 <script setup>
