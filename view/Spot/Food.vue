@@ -49,8 +49,14 @@ const food = ref([]);
 const getFood = async () => {
   const changHuaFood = "https://tdx.transportdata.tw/api/basic/v2/Tourism/Restaurant/NewTaipei?%24top=10&%24format=JSON";
   const accessToken = await token.getToken();
-  const headers = {"authorization": "Bearer " + accessToken};
-  axios.get(changHuaFood, headers)
+  const config = {
+    url :changHuaFood,
+    method: "get",
+    headers: {
+      "authorization": "Bearer " + accessToken
+      }
+    };
+  await axios(config)
     .then((response) => {
       food.value = response.data.filter((item) => { return item.Picture.PictureUrl1 !== undefined });
       // 1.1 只渲染12筆食物

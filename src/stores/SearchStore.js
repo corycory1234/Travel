@@ -12,19 +12,31 @@ export default defineStore ("useSearchStore", () => {
   const allActivitiesArr = ref([]);
   const allFoodsArr = ref([]);
   const eachPageLength = ref([]);
+  const reg = /.jpg/; // 正則, 擋掉非 jpg 的圖片網址
   
   const getAllActivities = async () => {
     const accessTokenStr = await token.getToken();
     // 1.1 位在「首頁」，打「所有觀光活動」API 
     if(router.currentRoute.value.name === "Home") {
-      const headers = {
-        authorization: "Bearer " + accessTokenStr
-      };
+      const config = {
+        url: activityApi,
+        method: "get",
+        headers: {"authorization": "Bearer " + accessTokenStr}
+      }
+      // const headers = {
+      //   authorization: "Bearer " + accessTokenStr
+      // };
   
-      await axios.get(activityApi, headers)
+      await axios(config)
       .then((response) => {
         allActivitiesArr.value = response.data; // 裝所有觀光活動
         // console.log("成功, 拿到所有觀光活動", response);
+        // 1.2 擋掉drive.google || 非.jpg的網址
+        allActivitiesArr.value.forEach((item) => {
+          if(!reg.test(item.Picture.PictureUrl1)){
+            item.Picture.PictureUrl1 = getAssetUrl();
+          };
+        });
         eachPageLength.value = []; 
         // 各 20 筆觀光活動小陣列物件 in eachPageLength大陣列
         toGetAllActvitiesByPages(allActivitiesArr.value)
@@ -32,16 +44,25 @@ export default defineStore ("useSearchStore", () => {
       .catch((error)=>{console.log("失敗, 沒拿到所有觀光活動", error);})
     }
 
-    // 1.2 「美食住宿」頁面, Pinia 打「所有美食」API
+    // 1.3 「美食住宿」頁面, Pinia 打「所有美食」API
     else if (router.currentRoute.value.name === "FoodTravel") {
-      const headers = {
-        authorization: "Bearer " + accessTokenStr
-      };
 
-      await axios.get(foodApi, headers)
+      const config = {
+        url: foodApi,
+        method: "get",
+        headers: {"authorization": "Bearer " + accessTokenStr}
+      }
+
+      await axios(config)
       .then((response) => {
-        allFoodsArr.value = response.data; // 裝所有觀光活動
+        allFoodsArr.value = response.data; // 裝所有美食
         // console.log("成功, 拿到所有美食", response);
+        // 1.4 擋掉drive.google || 非.jpg的網址
+        allFoodsArr.value.forEach((item) => {
+          if(!reg.test(item.Picture.PictureUrl1)){
+            item.Picture.PictureUrl1 = getAssetUrl();
+          };
+        });
         // 各 20 筆美食小陣列物件 in eachPageLength大陣列 
         toGetAllActvitiesByPages(allFoodsArr.value)
       })
@@ -128,6 +149,12 @@ export default defineStore ("useSearchStore", () => {
     keyword.value = "";
   };
 
+  // 3. Vite圖片部屬問題 
+  const getAssetUrl = () => {
+    return new URL (`/src/assets/pics/NotFound/placeholder.png`, import.meta.url).href
+  }
+    
+
 
   return {
     getAllActivities, 
@@ -137,5 +164,6 @@ export default defineStore ("useSearchStore", () => {
     searchedArr, 
     eachPageLength,
     isLoading,
+    getAssetUrl,
   };
 });

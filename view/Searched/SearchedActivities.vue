@@ -19,7 +19,7 @@
           <!-- 4.2 圖片 -->
           <div class="col-5">
             <div class="activity-card-pic p-2">
-              <img :src="item.Picture.PictureUrl1 || '/src/assets/pics/NotFound/placeholder.png'" :alt="item.location">
+              <img :src="item.Picture.PictureUrl1 || getAssetUrl" :alt="item.location">
             </div>
           </div>
           <!-- 4.3 標題、內文、活動地點 -->
@@ -100,7 +100,7 @@ import {ref, onMounted, computed} from "vue";
 import useSearchStore from "/src/stores/SearchStore.js";
 import {storeToRefs} from "pinia";
 const searchStore = useSearchStore();
-const {getAllActivities, search} = searchStore;
+const {getAllActivities, search, getAssetUrl} = searchStore;
 const {getAllActivitiesArr, allActivitiesArr, searchedArr, keyword, eachPageLength,
   isLoading} = storeToRefs(searchStore);
 // onMounted(() => { getAllActivities()});

@@ -14,6 +14,7 @@ export default defineStore("useSelectStore", () => {
   const dataArr = ref([]);
   let apiUrl = "";
   const isLoading = ref(false); // overlay加載動畫
+  const reg = /.jpg/; // 正則, 擋掉非 jpg 的圖片網址
 
   const select = async () => {
     isLoading.value = true;
@@ -63,7 +64,6 @@ export default defineStore("useSelectStore", () => {
     .then((response) => {
       dataArr.value = response.data;
       // console.log("成功, 拿到SELECT資料",dataArr.value);
-      const reg = /.jpg/;
       dataArr.value.forEach((item) => {
         // 1.6 擋掉drive.google || 非.jpg的網址
         if(!reg.test(item.Picture.PictureUrl1)){
@@ -123,6 +123,12 @@ export default defineStore("useSelectStore", () => {
     .then((response) => {
       dataArr.value = response.data;
       // console.log("成功, 拿到SELECT資料",dataArr.value);
+      // 2.5 擋掉drive.google || 非.jpg的網址
+      dataArr.value.forEach((item) => {
+        if(!reg.test(item.Picture.PictureUrl1)){
+          item.Picture.PictureUrl1 = getAssetUrl();
+        };
+      });
       router.push({name: "SelectedResults2"});
     })
     .catch((error)=>{console.log("SELECT失敗", error);})
