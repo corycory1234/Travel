@@ -19,7 +19,7 @@
             <!-- 4.2 圖片 -->
             <div class="col-5">
               <div class="clicked-card-pic p-2">
-                <img :src="item.Picture.PictureUrl1 || '/src/assets/pics/NotFound/placeholder.png'" :alt="item.location">
+                <img :src="item.Picture.PictureUrl1 || getAssetUrl" :alt="item.location">
               </div>
             </div>
             <!-- 4.3 標題、內文、活動地點 -->
@@ -132,6 +132,7 @@ import {ref, computed} from "vue";
 import useClickStore from "/src/stores/ClickStore.js";
 import {storeToRefs} from "pinia";
 const clickStore = useClickStore();
+const {getAssetUrl} = clickStore;
 const {carouselArr, isLoading} = storeToRefs(clickStore);
 
 // 2. 熱門活動/景點 Modal
@@ -171,4 +172,9 @@ const {searchedArr} = storeToRefs(searchStore);
 
 // 9. 搜尋失敗, 顯示NotFound
 import NotFound from "/src/components/NotFound.vue";
+
+// 10. 
+// const getAssetUrl = (image) => {
+//   return new URL (`/src/assets/pics/NotFound/${image}`, import.meta.url).href
+// }
 </script>

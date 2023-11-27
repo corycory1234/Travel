@@ -32,7 +32,7 @@ export default defineStore("useSelectStore", () => {
   // 1.2 選活動, 取指定活動, 若沒指定, 取所有活動
   if (selectedOption1.value === "活動") {
     apiUrl = selectedOption2.value 
-    ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${selectedOption2.value}?%24format=JSON`
+    ? `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${selectedOption2.value}?%24filter=Picture%2FPictureUrl1%20ne%20null&%24format=JSON`
     : "https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity?%24format=JSON"
   }
   else if (selectedOption1.value === "景點") {
@@ -56,12 +56,21 @@ export default defineStore("useSelectStore", () => {
   const accessTokenStr = await token.getToken();
   const config = {
     headers: {"authorization": "Bearer " + accessTokenStr,}
-  }
+  };
+
   // 1.5 獲取 response資料 (活動、景點)
   await axios.get(apiUrl, config)
     .then((response) => {
       dataArr.value = response.data;
       // console.log("成功, 拿到SELECT資料",dataArr.value);
+      const reg = /.jpg/;
+      dataArr.value.forEach((item) => {
+        // 1.6 擋掉drive.google || 非.jpg的網址
+        if(!reg.test(item.Picture.PictureUrl1)){
+          item.Picture.PictureUrl1 = getAssetUrl();
+        }
+      })
+
       router.push({name: "SelectedResults"});
     })
     .catch((error)=>{console.log("SELECT失敗", error);})
@@ -127,7 +136,10 @@ export default defineStore("useSelectStore", () => {
 
   };
 
-
+    // 3. Vite圖片部屬問題 
+    const getAssetUrl = () => {
+      return new URL (`/src/assets/pics/NotFound/placeholder.png`, import.meta.url).href
+    }
   
   return {
     selectedOption1,
@@ -137,5 +149,6 @@ export default defineStore("useSelectStore", () => {
     dataArr,
     select,
     isLoading,
+    getAssetUrl,
   };
 })

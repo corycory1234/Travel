@@ -16,10 +16,10 @@ export default defineStore ("useClickStore", () => {
       setTimeout(resolve, 1000);
     })
 
-
+    const reg = /.jpg/;
     const accessTokenStr = await token.getToken();
     const headers = { authorization: "Bearer " + accessTokenStr} ;
-    const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${city}?%24format=JSON`;
+    const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity/${city}?%24filter=Picture%2FPictureUrl1%20ne%20null&%24format=JSON`;
     axios.get(apiUrl, headers)
       .then((response) => {
         carouselArr.value = response.data;
@@ -27,6 +27,10 @@ export default defineStore ("useClickStore", () => {
         carouselArr.value.forEach((item) => {
           if(item.Location === "to see the official site") {
             item.Location = "";
+          }
+          // 1.3 擋掉drive.google || 非.jpg的網址
+          if(!reg.test(item.Picture.PictureUrl1)){
+            item.Picture.PictureUrl1 = getAssetUrl();
           }
         })
       })
@@ -41,6 +45,10 @@ export default defineStore ("useClickStore", () => {
     router.push({name: "ClickedCity"});
   };
 
+  // 2. Vite圖片部屬問題 
+  const getAssetUrl = () => {
+    return new URL (`/src/assets/pics/NotFound/placeholder.png`, import.meta.url).href
+  }
 
-  return {to, carouselArr, isLoading}
+  return {to, carouselArr, isLoading, getAssetUrl}
 })
