@@ -97,7 +97,7 @@ export default defineStore ("useSearchStore", () => {
        };
     });
     
-    console.log(eachPageLength.value);
+    // console.log(eachPageLength.value);
   }
 
   // 2. 搜尋 觀光活動

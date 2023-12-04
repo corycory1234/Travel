@@ -3,6 +3,7 @@
   <Banner></Banner>
   <Food></Food>
   <Hotel></Hotel>
+  <GoTop></GoTop>
   <Footer></Footer>
 </template>
 
@@ -19,5 +20,8 @@ import useSearchStore from "/src/stores/SearchStore.js";
 const searchStore = useSearchStore();
 const {getAllActivities} = searchStore;
 onMounted(() => {getAllActivities()});
+
+// 2. 返回頂部
+import GoTop from "/src/components/GoTop.vue";
 
 </script>

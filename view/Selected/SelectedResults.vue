@@ -79,6 +79,7 @@
   </div>
   <Modal ref="refModal"></Modal>
   <NotFound v-if="!paginatedArr.length"></NotFound>
+  <GoTop></GoTop>
   <Footer></Footer>
   <Loading :active="isLoading">
     <div class="d-flex justify-content-between align-items-center"
@@ -150,4 +151,7 @@ const {searchedArr} = storeToRefs(searchStore);
 
 // 9. 搜尋失敗, 顯示NotFound
 import NotFound from "/src/components/NotFound.vue";
+
+// 10. 返回頂部
+import GoTop from "/src/components/GoTop.vue";
 </script>

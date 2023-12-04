@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-2">
     <div>
-      <h3 class="h5"><i class="bi bi-square-fill square me-2"></i>熱門餐飲</h3>
+      <h3 class="h5 fw-bold"><i class="bi bi-square-fill square me-2"></i>熱門餐飲</h3>
     </div>
 
     <!-- 5. 熱門餐飲-->

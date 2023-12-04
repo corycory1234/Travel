@@ -1,7 +1,7 @@
 <template>
   <div class="container my-5">
     <div>
-      <h3 class="h5">
+      <h3 class="h5 fw-bold">
         <i class="bi bi-square-fill square me-2"></i>
         推薦住宿
       </h3>

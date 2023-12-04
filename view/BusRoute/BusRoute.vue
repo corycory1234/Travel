@@ -111,7 +111,7 @@
   <div class="container" :class="renderGoData.length >0 || renderBackData.length >0 ? 'height' : 'vhHeight'">
 
 
-  <div class="container py-5 " v-if="renderGoData.length >0 || renderBackData.length >0">
+  <div class="container" v-if="renderGoData.length >0 || renderBackData.length >0">
     <div v-for="(item, index) in renderGoData" :key="index" 
     class="row align-items-center justify-content-md-center gx-0" v-if="goFlag">
       <p class="col-4 col-md-2 rounded p-2 text-center" 
@@ -188,7 +188,8 @@
         <p class="col-8 col-md-2 ps-2">象山</p>
       </div>
     </div> -->
-
+  
+  <GoTop></GoTop>
   <Footer></Footer>
 </template>
 
@@ -430,4 +431,7 @@ watch(
       }, 1000)
     }},
 )
+
+// 7. 返回頂部
+import GoTop from "/src/components/GoTop.vue";
 </script>

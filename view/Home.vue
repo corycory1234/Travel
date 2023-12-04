@@ -4,6 +4,7 @@
   <City></City>
   <Activity></Activity>
   <Food></Food>
+  <GoTop></GoTop>
   <Footer></Footer>
 </template>
 
@@ -26,4 +27,6 @@ const searchStore = useSearchStore();
 const {getAllActivities} = searchStore;
 // onMounted(()=> {getAllActivities()});
 
+// 2. 返回頂部
+import GoTop from "../src/components/GoTop.vue";
 </script>
