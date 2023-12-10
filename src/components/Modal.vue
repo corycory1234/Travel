@@ -142,7 +142,7 @@ const openModal = (fatherActivity) => {
       return arr;
     },[]);
   };
-  console.log(imgArr.value);
+  // console.log(imgArr.value);
   refActivityModal2.value.show();
 };
 defineExpose({openModal});

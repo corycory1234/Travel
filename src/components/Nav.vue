@@ -26,6 +26,11 @@
             <img src="../assets/pics/NavPics/Frame40.png" alt="" class="link-img">
             景點交通
           </router-link>
+
+          <router-link :to="{name: 'MyFavorite'}" class="header-link spot text-nowrap" href="#">
+            <img src="../assets/pics/NavPics/Frame38.png" alt="" class="link-img">
+            我的收藏
+          </router-link>
         </div>
       </nav>
 
@@ -56,6 +61,15 @@
           :class="{'activeTrue': isRouteActive('/view/BusRoute/BusRoute.vue'), 
           'activeFalse': !isRouteActive('/view/BusRoute/BusRoute.vue')}"
          >景點交通
+          </router-link>
+        </li>
+
+        <li class="nav-item">
+          <router-link :to="{name: 'MyFavorite'}" 
+          class="nav-link p-2" 
+          :class="{'activeTrue': isRouteActive('/view/MyFavorite/MyFavorite.vue'), 
+          'activeFalse': !isRouteActive('/view/MyFavorite/MyFavorite.vue')}"
+         >我的收藏
           </router-link>
         </li>
       </ul>

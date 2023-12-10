@@ -26,6 +26,8 @@ const routes = [
   "基隆市","新竹市","新竹縣","苗栗縣","彰化縣","南投縣","雲林縣",
   "嘉義縣","嘉義市","屏東縣","宜蘭縣","花蓮縣","臺東縣","金門縣","澎湖縣"]},
   component: () => import ("/view/BusRoute/BusRoute.vue")},
+  { path:"/view/MyFavorite/MyFavorite.vue", name:"MyFavorite", 
+  component: () => import ("/view/MyFavorite/MyFavorite.vue")}, // 我的收藏
 ];
 
 const router = createRouter({

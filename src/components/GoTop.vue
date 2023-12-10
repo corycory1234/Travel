@@ -27,6 +27,7 @@
   const showGoTop = ref(false);
   const goTop = () => {
     document.body.scrollTop = 0;
+    // 1.1 根元素，返回頂端
     document.documentElement.scrollTop = 0;
   };
   // 2. 滾動高度 > 97時，才「顯示返回頂部」

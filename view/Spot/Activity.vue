@@ -7,7 +7,7 @@
     <div class="row gx-3">
 
       <!-- 4.1 活動卡片 (START) -->
-      <div v-for="(item) in activity" 
+      <div v-for="(item, index) in activity" 
       :key="item.ActivityID" 
       class="col-12 col-md-6 mb-3 " 
       @click.prevent="openModal(item)"
@@ -41,6 +41,9 @@
                     flex-column ">
                       <i class="bi bi-geo-alt-fill location text-truncate">
                         <span class="text-dark fw-bold px-2">{{ item.Location }}</span>
+                        <i class="heart" :class="{'bi bi-heart': !item.isFavorite, 'bi bi-heart-fill': item.isFavorite}" 
+                        @click.stop="favoriteStore.getFavorite(item)" @click="heart(item)">
+                        </i>
                       </i>
                       <button class="btn btn-outline-danger subtitle-1 text-truncate d-none d-lg-block" @click.prevent="openModal(item)">
                         活動詳情
@@ -64,6 +67,12 @@
 
 <style lang="scss" scoped>
 @import "/src/sass/_activity.scss";
+.heart{
+  color:#ff1d6c;
+}
+.heart:hover{
+  cursor: pointer;
+}
 </style>
 
 <script setup>
@@ -99,5 +108,12 @@ const openModal = (item) => {
   refActivityModal.value.openModal(item);
 }
 
-
+// 3. 我的收藏
+import {useFavoriteStore} from "/src/stores/FavoriteStore.js";
+const favoriteStore = useFavoriteStore();
+const flag = ref({});
+const heart = (item) => {
+  // 3.1 TOGGLE, 增加/取消收藏
+  item.isFavorite = !item.isFavorite;
+}
 </script>

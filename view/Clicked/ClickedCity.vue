@@ -40,7 +40,11 @@
                     <div class="d-flex flex-lg-row justify-content-lg-between align-items-lg-center 
                     flex-column">
                           <i class="bi bi-geo-alt-fill me-1 location text-truncate">
-                            <span class="text-dark fw-bold">{{ item.Location || item.City || item.Address }}</span>
+                            <span class="text-dark fw-bold">{{ item.City || item.Address }}</span>
+                            <i class="heart ps-3" :class="{'bi bi-heart': !item.isFavorite, 'bi bi-heart-fill': item.isFavorite}" 
+                            @click.stop="favoriteStore.getFavorite(item)"
+                            @click="heart(item)">
+                            </i>
                           </i>
                           <button class="btn btn-outline-danger subtitle-1 text-truncate
                           d-none d-lg-block" 
@@ -119,7 +123,12 @@
     }
   };
 }
-
+.heart{
+  color:#ff1d6c;
+}
+.heart:hover{
+  cursor: pointer;
+}
 </style>
 
 <script setup>
@@ -177,4 +186,11 @@ import NotFound from "/src/components/NotFound.vue";
 // 10. 返回頂部
 import GoTop from "/src/components/GoTop.vue";
 
+// 11. 我的收藏
+import {useFavoriteStore} from "/src/stores/FavoriteStore.js";
+const favoriteStore = useFavoriteStore();
+const heart = (item) => {
+  // 3.1 TOGGLE, 增加/取消收藏
+  item.isFavorite = !item.isFavorite;
+}
 </script>

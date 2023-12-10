@@ -15,7 +15,11 @@
 
           </div>
           <div class="card-body">
-            <h5 class="card-title pt-2 text-truncate">{{ item.RestaurantName }}</h5>
+            <h5 class="card-title pt-2 text-truncate">{{ item.RestaurantName }} 
+              <i class="heart" :class="{'bi bi-heart': !item.isFavorite, 'bi bi-heart-fill': item.isFavorite}" 
+              @click.stop="favoriteStore.getFavorite(item, item.id)" @click="heart(item)">
+              </i>
+            </h5>
             <p class="card-text text-success text-truncate fw-bold">
               <i class="bi bi-geo-alt-fill me-1 location"></i>
               {{ item.Address }}
@@ -31,6 +35,12 @@
 </template>
 <style lang="scss" scoped>
 @import "/src/sass/_food.scss";
+.heart{
+  color:#ff1d6c;
+}
+.heart:hover{
+  cursor: pointer;
+}
 </style>
 
 <script setup>
@@ -70,5 +80,13 @@ const openModal = (item) => {
   // 2.1 把 item 傳給子元件, 讓子元件 MODAL 視窗渲染
   refFoodModal.value.openModal(item);
 };
+
+// 3. 我的收藏
+import {useFavoriteStore} from "/src/stores/FavoriteStore.js";
+const favoriteStore = useFavoriteStore();
+const heart = (item) => {
+  // 3.1 TOGGLE, 增加/取消收藏
+  item.isFavorite = !item.isFavorite;
+}
 
 </script>
