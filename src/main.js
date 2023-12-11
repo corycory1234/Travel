@@ -44,5 +44,9 @@ import Loading from "vue3-loading-overlay";
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
 app.component("Loading", Loading); // / 採用Component全域註冊, 因每個地方都用得到; 這樣一來任何元件檔 就不用再import一次
 
+// 11. Pinia 持久化
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+pinia.use(piniaPluginPersistedstate);
+
 // 8. 掛載 app
 app.mount("#app")

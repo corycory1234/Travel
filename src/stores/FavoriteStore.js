@@ -47,4 +47,9 @@ export const useFavoriteStore = defineStore("favorite", () => {
   
 
   return {getFavorite, favoriteArr};
+},{
+  persist: {
+    key:"favorite",
+    paths:["favoriteArr"]
+  }
 })
