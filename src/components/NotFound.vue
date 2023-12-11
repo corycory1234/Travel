@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-5">
+  <div class="container my-5 notFound-Height">
     <div class="row flex-column flex-lg-row justify-content-center align-items-center">
       <div class="col-12 col-lg-4 text-center text-lg-end">
         <img src="../assets/pics/NotFound/Union.png" alt="NotFound">
@@ -24,5 +24,8 @@
 }
 .notFound {
   color:#D2D2D2;
+}
+.notFound-Height {
+  min-height: 64.5vh;
 }
 </style>

@@ -79,7 +79,13 @@
   <Modal ref="refActivitiesModal"></Modal>
   <NotFound v-if="!paginatedActivities.length"></NotFound>
   <GoTop></GoTop>
+
+  <!-- 5. FOOTER頁尾 -->
+  <!-- <div class="container-fluid text-center bg-white py-3 fixed-bottom">
+    <p class="footer-txt">Taiwan Tourguide © Code: Kory / Design: KT</p>
+  </div> -->
   <Footer></Footer>
+
   <Loading :active="isLoading">
     <div class="d-flex justify-content-between align-items-center"
       style="width:280px;">
@@ -103,7 +109,6 @@
 <script setup>
 import Nav from "/src/components/Nav.vue";
 import Banner from "../Spot/Banner.vue";
-import Footer from "/src/components/Footer.vue";
 import {ref, onMounted, computed} from "vue";
 
 // 1. Pinia 搜尋
@@ -168,4 +173,7 @@ const heart = (item) => {
   // 3.1 TOGGLE, 增加/取消收藏
   item.isFavorite = !item.isFavorite;
 }
+
+// 11. Footer 頁尾
+import Footer from "/src/components/Footer.vue";
 </script>

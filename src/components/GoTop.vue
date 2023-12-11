@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-show="showGoTop">
-    <div class="d-flex justify-content-end py-3">
+    <div class="d-flex justify-content-end">
       <button  @click.prevent="goTop" 
       class="goTop rounded-circle border-0">
         <i class="bi bi-arrow-up fs-5"></i>

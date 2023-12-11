@@ -84,7 +84,7 @@ const openModal = (fatherFood) => {
       return emptyArr;
     }, []);
   };
-  console.log(imgArr.value);
+  // console.log(imgArr.value);
   refFoodModal2.value.show()
 };
 defineExpose({ openModal });

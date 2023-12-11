@@ -73,16 +73,18 @@
       </router-link>
     </li>
   </ul>
-
-  <!-- 1.5 下拉選單 <SELECT> -->
 </div>
-  
-<div class="container mt-2">
+  <div class="container">
     <div>
-      <h3 class="h5 fw-bold"><i class="bi bi-caret-up-fill triangle me-2"></i>我的收藏</h3>
+      <h3 class="h5 fw-bold pt-3"><i class="bi bi-caret-up-fill triangle me-2"></i>我的收藏</h3>
     </div>
+  </div>
+<div class="container mt-2 min-vh-100" v-if="favoriteStore.favoriteArr.length">
+    <!-- <div>
+      <h3 class="h5 fw-bold pt-3"><i class="bi bi-caret-up-fill triangle me-2"></i>我的收藏</h3>
+    </div> -->
     <!-- 2. 我的收藏-->
-    <div class="row row-cols-2 row-cols-lg-5 g-2">
+    <div class="row row-cols-2 row-cols-lg-5 g-2 ">
 
       <div class="col" v-for="(item) in favoriteStore.favoriteArr" :key="item.id"
       @click.prevent="openModal(item.item)">
@@ -112,9 +114,11 @@
 
   <Modal ref="refModal"></Modal>
   <NotFound v-if="!favoriteStore.favoriteArr.length"></NotFound>
-  <div class="container-fluid text-center bg-white py-3 fixed-bottom">
+  <div  class="container-fluid text-center bg-white py-3 mt-5">
     <p class="footer-txt">Taiwan Tourguide © Code: Kory / Design: KT</p>
   </div>
+  <!-- <Footer v-else></Footer> -->
+  <GoTop></GoTop>
 </template>
 
 <style lang="scss" scoped>
@@ -153,5 +157,11 @@ const openModal = (item) => {
 
 // 4. NotFound 收藏Arr長度為0
 import NotFound from "/src/components/NotFound.vue";
+
+// 5. 返回頂部
+import GoTop from "/src/components/GoTop.vue";
+
+//
+import Footer from "/src/components/Footer.vue";
 
 </script>

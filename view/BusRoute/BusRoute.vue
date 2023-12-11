@@ -73,7 +73,7 @@
     <!-- 1.5 下拉選單 <SELECT> -->
       <div class="input-group mt-2">
         <select name="" id="" class="form-select me-1 rounded border-0 shadow-sm" v-model="city">
-          <option value="">選擇縣市</option>
+          <option value="" disabled>選擇縣市</option>
           <option 
             v-for="(option, index) in allCitiesJSON"
             :value="option.Value" 
@@ -83,7 +83,7 @@
         </select>
           
         <select name="" id="" class="form-select rounded border-0 shadow-sm" v-model="routeName">
-          <option value="">選擇路線</option>
+          <option value="" disabled>選擇路線</option>
           <option 
             v-for="(route) in routeData"
             :value="route.RouteName.Zh_tw"
@@ -123,7 +123,7 @@
 
   <!--4. 剩餘到站時間、公車站名 -->
 
-  <div class="container" v-if="renderGoData.length >0 || renderBackData.length >0">
+  <div class="container mb-5" v-if="renderGoData.length >0 || renderBackData.length >0">
     <div v-for="(item, index) in renderGoData" :key="index" 
     class="row align-items-center justify-content-md-center gx-0" v-if="goFlag">
       <p class="col-4 col-md-2 rounded p-2 text-center" 
