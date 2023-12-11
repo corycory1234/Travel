@@ -27,7 +27,7 @@ export const useFavoriteStore = defineStore("favorite", () => {
   //   }
   // })
 
-  // GPT的成功方法
+  // 1. GPT的成功方法 (待研究)
   const getFavorite = (item) => {
     const existingItemIndex = favoriteArr.value.findIndex((favoriteItem) => {
       return JSON.stringify(favoriteItem.item) === JSON.stringify(item);
@@ -47,7 +47,9 @@ export const useFavoriteStore = defineStore("favorite", () => {
   
 
   return {getFavorite, favoriteArr};
-},{
+},
+// 2. Pinia 持久化, 似localStorage
+{
   persist: {
     key:"favorite",
     paths:["favoriteArr"]

@@ -44,7 +44,7 @@
   
             <a @click.prevent="next" href="#"
             class="rightBtn"
-            :class="{'disabled': imgPage === imgArr.length}"
+            :class="{'disabled': imgPage === imgArr.length-1}"
             >
               <i class="bi bi-caret-right-fill fs-5"></i>
             </a>
@@ -128,6 +128,8 @@ const childActivity = ref({});
 const imgArr = ref([]);
 const reg = /^https:/;
 const openModal = (fatherActivity) => {
+  // 3.4 點另個Modal視窗, 圖片Arr索引值歸零, 解決computed緩存最後一筆索引值問題
+  imgPage.value = 0;
   // 3.1 展開運算子, 點點點取得 父元件傳過來的item, 並用物件形式 傳值 給 childActivity變數
   childActivity.value = {...fatherActivity};
   // 3.2 如果有巢狀物件, 就跑 reduce 迴圈
@@ -150,12 +152,13 @@ defineExpose({openModal});
 // 4. 點擊換圖片
 const imgPage = ref(0);
 const changeImg = computed(() => {
+  console.log(imgArr.value);
   return imgArr.value[imgPage.value];
 });
 
 // 5. 下一張
 const next = () => {
-  if(imgPage.value === imgArr.value.length) {return;};
+  if(imgPage.value === imgArr.value.length-1) {return;};
   imgPage.value++;
 };
 
