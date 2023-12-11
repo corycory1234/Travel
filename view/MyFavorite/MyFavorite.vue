@@ -112,7 +112,9 @@
 
   <Modal ref="refModal"></Modal>
   <NotFound v-if="!favoriteStore.favoriteArr.length"></NotFound>
-  <Footer></Footer>
+  <div class="container-fluid text-center bg-white py-3 fixed-bottom">
+    <p class="footer-txt">Taiwan Tourguide © Code: Kory / Design: KT</p>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -152,6 +154,4 @@ const openModal = (item) => {
 // 4. NotFound 收藏Arr長度為0
 import NotFound from "/src/components/NotFound.vue";
 
-// 5. Footer 頁尾
-import Footer from "/src/components/Footer.vue";
 </script>

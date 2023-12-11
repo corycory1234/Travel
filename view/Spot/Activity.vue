@@ -1,6 +1,6 @@
 <template>
   <!-- 4. 熱門活動 -->
-  <div class="container my-5">
+  <div class="container my-2">
     <div>
       <h3 class="h5 fw-bold"><i class="bi bi-caret-up-fill triangle me-2"></i>熱門活動</h3>
     </div>

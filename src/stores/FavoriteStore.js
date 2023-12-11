@@ -38,10 +38,10 @@ export const useFavoriteStore = defineStore("favorite", () => {
         id: +new Date(),
         item,
       });
-      console.log(favoriteArr.value);
+      // console.log(favoriteArr.value);
     } else {
       favoriteArr.value.splice(existingItemIndex, 1);
-      console.log(favoriteArr.value);
+      // console.log(favoriteArr.value);
     }
   };
   

@@ -355,19 +355,19 @@ const offsetWidth = ref(0);
 const offsetLeft = () => {
   currentOffest.value += offsetWidth.value;
   showBtn.value = !showBtn.value;
-  console.log(currentOffest.value);
+  // console.log(currentOffest.value);
 };
 // 2.3 輪播圖右按鈕
 const offsetRight = () => { 
   currentOffest.value -= offsetWidth.value;
   showBtn.value = !showBtn.value;
-  console.log(currentOffest.value);
+  // console.log(currentOffest.value);
 }
 // 2.4 <ul>寬度
 const refSlides = ref();
 onMounted(() => {
   offsetWidth.value = refSlides.value.offsetWidth;
-  console.log(offsetWidth.value);
+  // console.log(offsetWidth.value);
 })
 
 </script>
