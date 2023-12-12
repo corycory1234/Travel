@@ -65,5 +65,12 @@
 </ol>
 <img src="./src/assets/pics/ReadMe/BusIntro.png">
 
+<h1>我的收藏</h1>
+<ol>
+  <li>透過Pinia Persist持久化，實現Data數據保存</li>
+  <li>可於各頁面進行收藏活動、景點、美食、住宿，也可以再次點擊取消收藏</li>
+</ol>
+<img src="./src/assets/pics/ReadMe/collection.png">
+
 <h1>參考資料</h1>
 <p>交通部 <a href="https://tdx.transportdata.tw/">TDX 運輸資料流通服務</a></p>
