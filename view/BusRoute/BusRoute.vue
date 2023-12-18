@@ -434,7 +434,7 @@ watch(
     if(city.value) {
       setTimeout(() => {
         getBusRoutes()
-      }, 1000)
+      }, 500)
     }},
 )
 

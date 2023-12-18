@@ -111,7 +111,6 @@ const openModal = (item) => {
 // 3. 我的收藏
 import {useFavoriteStore} from "/src/stores/FavoriteStore.js";
 const favoriteStore = useFavoriteStore();
-const flag = ref({});
 const heart = (item) => {
   // 3.1 TOGGLE, 增加/取消收藏
   item.isFavorite = !item.isFavorite;

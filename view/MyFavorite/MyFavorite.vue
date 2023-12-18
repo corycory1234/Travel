@@ -161,7 +161,5 @@ import NotFound from "/src/components/NotFound.vue";
 // 5. 返回頂部
 import GoTop from "/src/components/GoTop.vue";
 
-//
-import Footer from "/src/components/Footer.vue";
 
 </script>
